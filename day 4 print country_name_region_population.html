@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<script>
+//https://restcountries.com/v2/all
+let req = new XMLHttpRequest();
+req.open("GET", "https://restcountries.com/v2/all");
+
+req.onload = () => {
+  //console.log(JSON.parse(req.response)[0]);
+  let covertedJson = JSON.parse(req.response);
+  // console.log(covertedJson)
+  for (i in covertedJson) {
+    console.log("name:"+covertedJson[i].name);
+    console.log("region:"+covertedJson[i].region);
+    console.log("subregion:"+covertedJson[i].subregion);
+    console.log("population:"+covertedJson[i].population);
+    console.log("")
+  }
+
+
+
+    
+  console.log(req.status);
+  console.log(req.statusText);
+};
+req.onerror = () => {
+  console.log(req.response);
+  console.log(req.status);
+  console.log(req.statusText);
+};
+req.send();
+
+</script>
+</head>
+<body>
+  
+</body>
+</html>
